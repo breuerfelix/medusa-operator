@@ -7,7 +7,7 @@ RUN apt-get install -y python
 RUN npm install -g npm
 
 RUN npm install -g @medusajs/medusa-cli
-RUN medusa new store --seed
+RUN medusa new store
 WORKDIR /app/medusa/store
 
 COPY medusa-config.js medusa-config.js
