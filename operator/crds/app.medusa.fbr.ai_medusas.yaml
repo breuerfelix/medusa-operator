@@ -1,0 +1,62 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.9.2
+  creationTimestamp: null
+  name: medusas.app.medusa.fbr.ai
+spec:
+  group: app.medusa.fbr.ai
+  names:
+    kind: Medusa
+    listKind: MedusaList
+    plural: medusas
+    singular: medusa
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Medusa is the Schema for the medusas API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: MedusaSpec defines the desired state of Medusa
+            properties:
+              admin:
+                properties:
+                  domain:
+                    type: string
+                  image:
+                    type: string
+                type: object
+              backend:
+                properties:
+                  domain:
+                    type: string
+                  image:
+                    type: string
+                  redisURL:
+                    type: string
+                type: object
+            type: object
+          status:
+            description: MedusaStatus defines the observed state of Medusa
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
