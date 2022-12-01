@@ -1,0 +1,28 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Release.Namespace }}
+rules:
+  - apiGroups: ["app.medusa.fbr.ai"]
+    resources:
+    - "medusa"
+    - "medusa/status"
+    verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ .Chart.Name }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Chart.Name }}
+    namespace: {{ .Release.Namespace }}
+

@@ -6,9 +6,9 @@ metadata:
   name: testing-user
 spec:
   backend:
-    image: ghcr.io/breuerfelix/medusa/backend:latest
+    image: ghcr.io/breuerfelix/medusa-operator/backend:latest
     domain: medusa.fbr.ai
     redisURL: "redis://redis-master.redis:6379?ConnectTimeout=5000&password=aejfioj388749q41aasd&IdleTimeOutSecs=180&channelPrefix=testing-user"
   admin:
-    image: ghcr.io/breuerfelix/medusa/admin:latest
+    image: ghcr.io/breuerfelix/medusa-operator/admin:latest
     domain: medusa-admin.fbr.ai
