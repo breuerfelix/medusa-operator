@@ -1,5 +1,9 @@
 # operator
-// TODO(user): Add simple overview of use/purpose
+
+Run Operator
+```sh
+DB_URL="host=localhost port=5432 user=postgres password=supersecretpassword sslmode=disable" go run main.go
+```
 
 ## Description
 // TODO(user): An in-depth paragraph about your project and overview of use
