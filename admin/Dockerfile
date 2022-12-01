@@ -1,18 +1,15 @@
-FROM node:17.1.0 as builder
+FROM node:18 as builder
 
 WORKDIR /usr/app
 
-RUN apt-get update
-RUN yarn add sharp
-RUN yarn global add gatsby-cli
 RUN git clone https://github.com/medusajs/admin
 WORKDIR /usr/app/admin
 
 RUN yarn install
 ENV GATSBY_MEDUSA_BACKEND_URL=SEARCH_AND_REPLACE_ME
-RUN gatsby build
+RUN yarn build
 
-FROM nginx
+FROM nginx:1
 EXPOSE 80 
 COPY --from=builder /usr/app/admin/public /usr/share/nginx/html
 
